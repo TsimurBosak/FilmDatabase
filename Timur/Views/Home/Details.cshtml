@@ -1,0 +1,75 @@
+﻿@using Timur.Models
+@model Film
+@{
+    ViewBag.Title = "Details";
+}
+<link href="~/Content/Site.css" type="text/css" rel="stylesheet">
+<div>
+    <fieldset>
+
+        <legend>Информация о фильме</legend>
+        <div style="display:flex">
+            <div id="serega">
+                <img src="~/Content/Images/@Html.DisplayFor(model=>model.Film_picture)" width="480" height="640">
+            </div>
+            <div style="margin-left:10px;">
+                <div class="display-label"><b>Описание</b></div>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.Film_description)
+                </div>
+
+
+                <div class="display-label"><b>Название</b></div>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.Film_name)
+                </div>
+                <div class="display-label"><b>Год выпуска</b></div>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.Film_year)
+                </div>
+                <div class="display-label"><b>Длительность</b></div>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.Film_leng) мин
+                </div>
+                <div class="display-label"><b>Цена</b></div>
+                <div class="display-field">
+                     @Html.DisplayFor(model => model.Film_price) $ 
+                    @Html.ActionLink("Купить фильм", "Buy", new { x = Model.Id })
+                    
+                </div>
+
+
+                <div class="display-label"><b>Жанр</b></div>
+                <ul>
+                    @foreach (Genre c in Model.Genres)
+                    {
+                        <li>@c.Genre_name;</li>
+                    }
+                </ul>
+                <div class="display-label"><b>Продюсер</b></div>
+                <ul>
+                    @foreach (Producer c in Model.Producers)
+                    {
+                        <li>@c.Producer_name;</li>
+                    }
+                </ul>
+                <div class="display-label"><b>Страна</b></div>
+                <ul>
+                    @foreach (Country c in Model.Countries)
+                    {
+                        <li>@c.Country_name;</li>
+                    }
+                </ul>
+                <div class="display-label"><b>Главные роли</b></div>
+                <ul>
+                    @foreach (Actor c in Model.Actors)
+                    {
+                        <li>@c.Actor_name;</li>
+                    }
+
+                </ul>
+            </div>
+            </div>
+    </fieldset>
+
+</div>

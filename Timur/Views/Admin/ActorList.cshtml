@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Timur.Models.Actor>
+
+@{
+}
+<link rel="stylesheet" href="~/Content/Site.css" />
+<style>
+    .za {
+        display: inline-block;
+        width: 13em;
+        height: 2em;
+        line-height: 2em;
+        vertical-align: middle;
+        text-align: center;
+        text-decoration: none;
+        user-select: none;
+        color: black;
+        outline: none;
+        border: 1px solid rgba(0,0,0,.4);
+        border-top-color: rgba(0,0,0,.3);
+        border-radius: 2px;
+        background: linear-gradient(rgb(255,255,255), rgb(240,240,240));
+        box-shadow: 0 0 3px rgba(0,0,0,0) inset, 0 1px 1px 1px rgba(255,255,255,.2), 0 -1px 1px 1px rgba(0,0,0,0);
+        transition: .2s ease-in-out;
+    }
+
+        .za:hover:not(:active) {
+            box-shadow: 0 0 3px rgba(0,0,0,0) inset, 0 1px 1px 1px black, 0 -1px 1px 1px black;
+            color: black;
+        }
+
+        .za:active {
+            background: linear-gradient(rgb(62,66,77), rgb(235,235,235));
+            color: black;
+            box-shadow: 0 0 3px rgba(0,0,0,.5) inset, 0 1px 1px 1px rgba(255,255,255,.4), 0 -1px 1px 1px rgba(0,0,0,.1);
+        }
+</style>
+<title>Actor list</title>
+<h2>Список актёров</h2>
+
+<p>
+    @Html.ActionLink("Добавить актёра", "CreateActor", "Admin", null, new { @class = "za" })
+    @Html.ActionLink("Вернуться на Admin page", "AdminIndex", "Admin", null, new { @class = "za" })
+</p>
+<table class="table" style="text-align:center;">
+    <tr style="margin-left:200px;">
+        <td style="font-weight:bold; font-size:16px;">Название жанра:</td>
+        <td></td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td style="font-size:16px;">
+                @Html.DisplayFor(modelItem => item.Actor_name)
+            </td>
+            <td>
+                @Html.ActionLink("Изменить актёра", "EditActor", new { id = item.Id }, new { @class = "za" }) |
+                @Html.ActionLink("Удалить актёра", "DeleteActor", new { id = item.Id }, new { @class = "za" })
+            </td>
+        </tr>
+    }
+</table>

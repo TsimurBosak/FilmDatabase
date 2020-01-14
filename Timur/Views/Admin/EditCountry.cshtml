@@ -1,0 +1,46 @@
+﻿@model Timur.Models.Country
+<title>Country redact</title>
+<style>
+    .za {
+        display: inline-block;
+        width: 5em;
+        height: 2.16em;
+        line-height: 2em;
+        vertical-align: middle;
+        text-align: center;
+        text-decoration: none;
+        user-select: none;
+        color: black;
+        outline: none;
+        border: 1px solid rgba(0,0,0,.4);
+        border-top-color: rgba(0,0,0,.3);
+        border-radius: 2px;
+        background: linear-gradient(rgb(255,255,255), rgb(240,240,240));
+        box-shadow: 0 0 3px rgba(0,0,0,0) inset, 0 1px 1px 1px rgba(255,255,255,.2), 0 -1px 1px 1px rgba(0,0,0,0);
+        transition: .2s ease-in-out;
+    }
+
+        .za:hover:not(:active) {
+            box-shadow: 0 0 3px rgba(0,0,0,0) inset, 0 1px 1px 1px black, 0 -1px 1px 1px black;
+            color: black;
+        }
+
+        .za:active {
+            background: linear-gradient(rgb(62,66,77), rgb(235,235,235));
+            color: black;
+            box-shadow: 0 0 3px rgba(0,0,0,.5) inset, 0 1px 1px 1px rgba(255,255,255,.4), 0 -1px 1px 1px rgba(0,0,0,.1);
+        }
+</style>
+<h2>Страна № @Model.Id</h2>
+@using (Html.BeginForm("EditCountry", "Admin", FormMethod.Post))
+{
+    <fieldset>
+        @Html.HiddenFor(m => m.Id)
+        <p>
+            @Html.LabelFor(m => m.Country_name, "Название страны")
+            <br />
+            @Html.EditorFor(m => m.Country_name)
+        </p>
+        <p><input type="submit" value="Отправить" />  @Html.ActionLink("Назад", "CountryList", "Admin", null, new { @class = "za" })</p>
+    </fieldset>
+}

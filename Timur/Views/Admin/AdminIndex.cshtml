@@ -1,0 +1,49 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Admin page</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link type="text/css" rel="stylesheet" href='@Url.Content("~/Content/Site.css")' />
+</head>
+<body style="background : url('../Content/Images/fishnets-and-hearts.png');">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("BosFilm", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li style="margin-left:900px; margin-top:15px; color: rgb(157,157,157);"> Admin :</li>
+                    <li>@Html.ActionLink("Выйти", "Exit", "Account")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <p style="font-size:32px; margin-bottom:50px; font-weight:bold; color:black; margin-top:100px; margin-bottom:150px; margin-left:470px;">Редактировать/Добавить/Удалить</p>
+    <div style="display:inline; margin-left:120px; ">
+        @Html.ActionLink("Жанры", "GenreList", null, new { @class = "p2" })
+        @Html.ActionLink("Актёры", "ActorList", null, new { @class = "p1" })
+        @Html.ActionLink("Фильмы", "FilmList", null, new { @class = "p4" })
+        @Html.ActionLink("Страны", "CountryList", null, new { @class = "p3" })
+        @Html.ActionLink("Продюсеры", "ProducerList", null, new { @class = "p5" })
+        @Html.ActionLink("Пользователи", "UserList", null, new { @class = "p2" })
+    </div>
+    <footer style="margin-top:272px; margin-left:5px; font-size:22px; font-weight:bold;">
+        <p>&copy; @DateTime.Now.Year - BosFilm</p>
+    </footer>
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

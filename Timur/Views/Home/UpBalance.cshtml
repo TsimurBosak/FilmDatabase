@@ -1,0 +1,23 @@
+﻿@model Timur.Models.Bill
+
+@{
+    ViewBag.Title = "UpBalance";
+}
+
+<h2>UpBalance</h2>
+
+    
+<form action="UpBalance/" method="post">
+    <h4>Bill</h4>
+    <hr />
+    <input name="card" type="text" />
+    <p></p>
+    <input name="sum" type="number" />
+    <p></p>
+
+    <input type="submit" value="Create" class="btn btn-default" />
+</form>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
